@@ -9,9 +9,13 @@ import XMonad.Layout.Renamed
 myLogHook :: X ()
 myLogHook = fadeInactiveLogHook 0.75
 
-myDeco l = decoration shrinkText defaultTheme DefaultDecoration $ spacing 4 l
+myTheme = defaultTheme {
+      fontName = "xft:VL Gothic:size=9:antialias=true"
+}
 
-myLayoutHook = sp ||| Mirror sp ||| Full
+myDeco l = decoration shrinkText myTheme DefaultDecoration $ spacing 4 l
+
+myLayoutHook = sp ||| Full
   where
     sp = renamed [Replace "Decorated Spiral"] $ myDeco $ spiral (9 / 16)
 
